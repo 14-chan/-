@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/*レスポンシブ用*/
+
+
+
+// color
+:root{
+    --color-main: #17339C;
+    --color-txt: #000;
+    --color-white: #ffffff;
+    --color-blue: #1877f2;
+    --color-paleblue: #ccdcfe;
+    --color-lightblue: #2ea7e0;
+    --color-yellow: #ffdc26;
+    --color-navy: #213378;
+    --color-thinblue: #E8F8FF;
+    --color-gray: #EEE;
+}
+
+
+// font
+:root{
+    --font-main: "Noto Sans JP", sans-serif;//semibold=600
+    --font-en: "Roboto", sans-serif;
+    --font-point: "Noto Sans JP", sans-serif;//A-OTF Gothic MB101 Pro
+    --font-point02: "Noto Sans JP", sans-serif;//A-OTF Harucraft Std
+    --font-outfit: "Outfit", sans-serif;
+    --font-inter: "Inter", sans-serif;
+}
+
+
+// margin
+:root{
+    --default-margin: 1.6rem;
+    --margin-xs: calc(var(--default-margin) / 4);
+    --margin-s: calc(var(--default-margin) / 2);
+    --margin-m: var(--default-margin);
+    // 1.6 * 1.5 = 2.4
+    --margin-l: calc(var(--default-margin) * 1.5);
+    // 1.6 * 2 = 3.2
+    --margin-2l: calc(var(--default-margin) * 2);
+    // 1.6 * 3 = 4.8
+    --margin-3l: calc(var(--default-margin) * 3);
+    // 1.6 * 4 = 6.4
+    --margin-4l: calc(var(--default-margin) * 4);
+    // 1.6 * 5 = 8.0
+    --margin-5l: calc(var(--default-margin) * 5);
+    // 1.6 * 6 = 9.6
+    --margin-6l: calc(var(--default-margin) * 6);
+}

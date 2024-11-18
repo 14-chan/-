@@ -1,0 +1,438 @@
+@charset "UTF-8";
+/*レスポンシブ用*/
+:root {
+  --color-main: #17339C;
+  --color-txt: #000;
+  --color-white: #ffffff;
+  --color-blue: #1877f2;
+  --color-paleblue: #ccdcfe;
+  --color-lightblue: #2ea7e0;
+  --color-yellow: #ffdc26;
+  --color-navy: #213378;
+  --color-thinblue: #E8F8FF;
+  --color-gray: #EEE;
+}
+
+:root {
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-en: "Roboto", sans-serif;
+  --font-point: "Noto Sans JP", sans-serif;
+  --font-point02: "Noto Sans JP", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --default-margin: 1.6rem;
+  --margin-xs: calc(var(--default-margin) / 4);
+  --margin-s: calc(var(--default-margin) / 2);
+  --margin-m: var(--default-margin);
+  --margin-l: calc(var(--default-margin) * 1.5);
+  --margin-2l: calc(var(--default-margin) * 2);
+  --margin-3l: calc(var(--default-margin) * 3);
+  --margin-4l: calc(var(--default-margin) * 4);
+  --margin-5l: calc(var(--default-margin) * 5);
+  --margin-6l: calc(var(--default-margin) * 6);
+}
+
+body {
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  line-height: 1;
+}
+
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  font-style: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+main,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+div,
+address,
+iframe,
+canvas,
+hr,
+textarea {
+  display: block;
+}
+
+iframe {
+  max-width: 100% !important;
+}
+
+img,
+embed,
+object,
+video {
+  max-width: 100%;
+}
+
+a, label {
+  cursor: pointer;
+}
+
+blockquote {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+address, em {
+  font-style: normal;
+}
+
+hr {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+textarea {
+  resize: vertical;
+  overflow: hidden;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+}
+
+input, button, select {
+  vertical-align: middle;
+  border-radius: 0;
+  box-sizing: border-box;
+  border: 0;
+  background: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  cursor: pointer;
+  white-space: normal;
+  outline: 0;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+}
+
+button,
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+*:before, *:after {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*:before, *:after {
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+br {
+  font-size: 0;
+}
+
+::selection {
+  background: var(--color-navy);
+  color: #FFFFFF;
+}
+
+input::selection, textarea::selection {
+  color: #DDDDDD;
+}
+
+html {
+  font-size: 62.5%;
+  min-height: 100%;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/*レスポンシブ用*/
+:root {
+  --color-main: #17339C;
+  --color-txt: #000;
+  --color-white: #ffffff;
+  --color-blue: #1877f2;
+  --color-paleblue: #ccdcfe;
+  --color-lightblue: #2ea7e0;
+  --color-yellow: #ffdc26;
+  --color-navy: #213378;
+  --color-thinblue: #E8F8FF;
+  --color-gray: #EEE;
+}
+
+:root {
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-en: "Roboto", sans-serif;
+  --font-point: "Noto Sans JP", sans-serif;
+  --font-point02: "Noto Sans JP", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --default-margin: 1.6rem;
+  --margin-xs: calc(var(--default-margin) / 4);
+  --margin-s: calc(var(--default-margin) / 2);
+  --margin-m: var(--default-margin);
+  --margin-l: calc(var(--default-margin) * 1.5);
+  --margin-2l: calc(var(--default-margin) * 2);
+  --margin-3l: calc(var(--default-margin) * 3);
+  --margin-4l: calc(var(--default-margin) * 4);
+  --margin-5l: calc(var(--default-margin) * 5);
+  --margin-6l: calc(var(--default-margin) * 6);
+}
+
+.l-pagebody {
+  margin: 0;
+  padding: 0;
+}
+
+/*レスポンシブ用*/
+:root {
+  --color-main: #17339C;
+  --color-txt: #000;
+  --color-white: #ffffff;
+  --color-blue: #1877f2;
+  --color-paleblue: #ccdcfe;
+  --color-lightblue: #2ea7e0;
+  --color-yellow: #ffdc26;
+  --color-navy: #213378;
+  --color-thinblue: #E8F8FF;
+  --color-gray: #EEE;
+}
+
+:root {
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-en: "Roboto", sans-serif;
+  --font-point: "Noto Sans JP", sans-serif;
+  --font-point02: "Noto Sans JP", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --default-margin: 1.6rem;
+  --margin-xs: calc(var(--default-margin) / 4);
+  --margin-s: calc(var(--default-margin) / 2);
+  --margin-m: var(--default-margin);
+  --margin-l: calc(var(--default-margin) * 1.5);
+  --margin-2l: calc(var(--default-margin) * 2);
+  --margin-3l: calc(var(--default-margin) * 3);
+  --margin-4l: calc(var(--default-margin) * 4);
+  --margin-5l: calc(var(--default-margin) * 5);
+  --margin-6l: calc(var(--default-margin) * 6);
+}
+
+.l-container {
+  margin: 10rem auto;
+}
+
+/*レスポンシブ用*/
+:root {
+  --color-main: #17339C;
+  --color-txt: #000;
+  --color-white: #ffffff;
+  --color-blue: #1877f2;
+  --color-paleblue: #ccdcfe;
+  --color-lightblue: #2ea7e0;
+  --color-yellow: #ffdc26;
+  --color-navy: #213378;
+  --color-thinblue: #E8F8FF;
+  --color-gray: #EEE;
+}
+
+:root {
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-en: "Roboto", sans-serif;
+  --font-point: "Noto Sans JP", sans-serif;
+  --font-point02: "Noto Sans JP", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --default-margin: 1.6rem;
+  --margin-xs: calc(var(--default-margin) / 4);
+  --margin-s: calc(var(--default-margin) / 2);
+  --margin-m: var(--default-margin);
+  --margin-l: calc(var(--default-margin) * 1.5);
+  --margin-2l: calc(var(--default-margin) * 2);
+  --margin-3l: calc(var(--default-margin) * 3);
+  --margin-4l: calc(var(--default-margin) * 4);
+  --margin-5l: calc(var(--default-margin) * 5);
+  --margin-6l: calc(var(--default-margin) * 6);
+}
+
+.g-canvas {
+  margin: 0 auto;
+  background-image: url("../../../../images/background-title.png");
+  background-repeat: no-repeat;
+}
+
+/*レスポンシブ用*/
+:root {
+  --color-main: #17339C;
+  --color-txt: #000;
+  --color-white: #ffffff;
+  --color-blue: #1877f2;
+  --color-paleblue: #ccdcfe;
+  --color-lightblue: #2ea7e0;
+  --color-yellow: #ffdc26;
+  --color-navy: #213378;
+  --color-thinblue: #E8F8FF;
+  --color-gray: #EEE;
+}
+
+:root {
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-en: "Roboto", sans-serif;
+  --font-point: "Noto Sans JP", sans-serif;
+  --font-point02: "Noto Sans JP", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --default-margin: 1.6rem;
+  --margin-xs: calc(var(--default-margin) / 4);
+  --margin-s: calc(var(--default-margin) / 2);
+  --margin-m: var(--default-margin);
+  --margin-l: calc(var(--default-margin) * 1.5);
+  --margin-2l: calc(var(--default-margin) * 2);
+  --margin-3l: calc(var(--default-margin) * 3);
+  --margin-4l: calc(var(--default-margin) * 4);
+  --margin-5l: calc(var(--default-margin) * 5);
+  --margin-6l: calc(var(--default-margin) * 6);
+}
+
+/*# sourceMappingURL=style.css.map */
