@@ -393,10 +393,8 @@ html {
   --margin-6l: calc(var(--default-margin) * 6);
 }
 
-.g-canvas {
-  margin: 0 auto;
-  background-image: url("../../../../images/background-title.png");
-  background-repeat: no-repeat;
+.c-start__head {
+  display: flex;
 }
 
 /*レスポンシブ用*/
@@ -433,6 +431,11 @@ html {
   --margin-4l: calc(var(--default-margin) * 4);
   --margin-5l: calc(var(--default-margin) * 5);
   --margin-6l: calc(var(--default-margin) * 6);
+}
+
+.g-canvas {
+  background-image: url("../images/background-title.png");
+  background-repeat: no-repeat;
 }
 
 /*# sourceMappingURL=style.css.map */
