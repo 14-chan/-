@@ -2,36 +2,61 @@
 
 .c-start__head {
     display: flex;
+    justify-content: space-between;
 }
 
-.c-start__descrption__btn {
-
-}
+.c-start__description__btn {
+    padding-top: 2rem;
+    width: 13.8rem;
+    height: 9rem;
+    background-color: var(--color-red);
+    border-radius: 50%;
+    }
 
 .c-start__description__txt {
-
-}
-
-.c-start__option__btn {
-    
+    font-size: 3rem;
+    color: var(--color-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .c-start__option__txt {
-
+    font-size: 2rem;
+    text-align: center;
+    font-family: "YuGothic";
 }
 
 .c-start__option__img {
-
+    width: 7rem;
 }
 
 .c-start__ttl {
-
+    padding-top: 20rem;
+    text-align: center;
+    font-size: 5rem;
+    color: var(--color-red);
+    font-family: "YuGothic";
 }
 
 .c-start__selection__btn {
-    
+    margin-top: 10rem;
+    margin-left: 12rem;
 }
 
 .c-start__selection__txt {
-
+    display: flex;
+    align-items: center;
+    padding: .5rem .5rem .5rem 9rem;
+    background: var(--color-red);
+    color: var(--color-yellow);
+    width: 40rem;
+    height: 12rem;
+    clip-path: polygon(4% 0, 100% 0, 100% 85%, 96% 99%, 0 100%, 0 14%);
+    font-family: "YuGothic";
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 2.2rem;
 }
