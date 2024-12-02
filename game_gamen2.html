@@ -1,0 +1,47 @@
+// Matter.js のモジュールを取り込む
+const { Engine, Render, World, Bodies, Body, Events } = Matter;
+
+// エンジンとレンダラーを作成
+const engine = Engine.create();
+const render = Render.create({
+    element: document.body,
+    engine: engine
+});
+
+// 2つのオブジェクトが衝突した時に呼ばれる関数
+function mergeBodies(pair) {
+    const bodyA = pair.bodyA;
+    const bodyB = pair.bodyB;
+
+    // 新しいオブジェクトのプロパティを計算
+    const newX = (bodyA.position.x + bodyB.position.x) / 2;
+    const newY = (bodyA.position.y + bodyB.position.y) / 2;
+    const newRadius = Math.sqrt(bodyA.circleRadius * bodyA.circleRadius + bodyB.circleRadius * bodyB.circleRadius);
+
+    // 古いオブジェクトをワールドから削除
+    World.remove(engine.world, [bodyA, bodyB]);
+
+    // 新しいオブジェクトを作成してワールドに追加
+    const newBody = Bodies.circle(newX, newY, newRadius);
+    World.add(engine.world, newBody);
+}
+
+// オブジェクトが衝突した時にイベントリスナーを設定
+Events.on(engine, 'collisionStart', event => {
+    const pairs = event.pairs;
+    pairs.forEach(pair => {
+        if (pair.bodyA.label === 'fallingObject' && pair.bodyB.label === 'fallingObject') {
+            mergeBodies(pair);
+        }
+    });
+});
+
+// スペースキーが押された時に新しいオブジェクトを作成
+window.addEventListener('keydown', event => {
+    if (event.code === 'Space') {
+        const radius = 30;
+        const x = Math.random() * render.options.width;
+        const fallingBody = Bodies.circle(x, -radius, radius, { label: 'fallingObject' });
+        World.add(engine.world, fallingBody);
+    }
+});

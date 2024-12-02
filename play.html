@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Siebold Cooking</title>
+    <style>
+        canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+
+<script>
+// ゲームの設定と変数
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = 800;
+canvas.height = 600;
+
+const fruitSymbols = ["🍎", "🍐", "🍊", "🍋", "🍌"]; // 進化段階のシンボル
+const fruitSize = 40; // フルーツのサイズ
+let fruits = []; // 落ちるフルーツを格納する配列
+let player = { x: canvas.width / 2, y: canvas.height - 50, width: 100, height: 20 }; // プレイヤー
+let gravity = 0.5; // 重力
+let gameSpeed = 5; // ゲームの速度、フルーツの落下速度を制御
+
+// フルーツオブジェクトのコンストラクタ
+function Fruit(x, y, symbolIndex) {
+    this.x = x;
+    this.y = y;
+    this.symbolIndex = symbolIndex;s
+    this.velY = 0;
+}
+
+// キャンバスにフルーツを描画
+Fruit.prototype.draw = function() {
+    ctx.font = fruitSize + "px Arial";
+    ctx.fillText(fruitSymbols[this.symbolIndex], this.x, this.y);
+    this.y += this.velY;
+    this.velY += gravity;
+
+    // プレイヤーとの衝突をチェック
+    if (this.y + fruitSize > player.y && this.x > player.x && this.x < player.x + player.width) {
+        this.y = player.y - fruitSize;
+        this.velY = 0;
+        checkForEvolution(this);
+    }
+
+    // キャンバスの底をチェック
+    if (this.y + fruitSize > canvas.height) {
+        this.y = canvas.height - fruitSize;
+        this.velY = -this.velY * 0.7; // バウンド効果
+    }
+};
+
+// フルーツの進化をチェック
+function checkForEvolution(fruit) {
+    fruits.forEach(otherFruit => {
+        if (otherFruit !== fruit && otherFruit.x === fruit.x && otherFruit.y === fruit.y) {
+            fruit.symbolIndex++;
+            fruits.splice(fruits.indexOf(otherFruit), 1); // 他のフルーツを削除
+        }
+    });
+
+    if (fruit.symbolIndex >= fruitSymbols.length) {
+        fruit.symbolIndex = 0; // 最大段階に達したら最初の段階にリセット
+    }
+}
+
+// プレイヤーを描画
+function drawPlayer() {
+    ctx.fillRect(player.x, player.y, player.width, player.height);
+}
+
+// ゲームループ
+function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    fruits.forEach(fruit => fruit.draw());
+    drawPlayer();
+    requestAnimationFrame(update);
+}
+
+// プレイヤーの動きを制御
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowLeft") player.x -= gameSpeed;
+    if (event.key === "ArrowRight") player.x += gameSpeed;
+    if (event.key === "Spacebar" || event.key === " ") {
+        fruits.push(new Fruit(Math.random() * canvas.width, 0, Math.floor(Math.random() * fruitSymbols.length)));
+    }
+});
+
+update(); // ゲームループを開始
+</script>
+</body>
+</html>
