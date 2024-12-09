@@ -495,6 +495,85 @@ html {
   --margin-6l: calc(var(--default-margin) * 6);
 }
 
+.c-option__flow {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 3rem;
+  width: 100rem;
+}
+
+.c-option__ttl {
+  font-size: 3rem;
+}
+
+.c-option__list__item {
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.c-option__btn {
+  position: relative;
+}
+.c-option__btn::before {
+  display: block;
+  background: var(--color-black);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  clip-path: polygon(7% 1%, 100% 0, 100% 80%, 95% 99%, 0 100%, 0 25%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.c-option__btn__txt {
+  display: block;
+  width: 20rem;
+  padding: 0.4rem 0.4rem 0.4rem 0.4rem;
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: 1.4rem;
+  line-height: 1;
+  clip-path: polygon(7% 1%, 100% 0, 100% 80%, 95% 99%, 0 100%, 0 25%);
+}
+
+/*レスポンシブ用*/
+:root {
+  --color-main: #17339C;
+  --color-txt: #000;
+  --color-white: #ffffff;
+  --color-blue: #1877f2;
+  --color-paleblue: #ccdcfe;
+  --color-lightblue: #2ea7e0;
+  --color-yellow: #ffdc26;
+  --color-navy: #213378;
+  --color-thinblue: #E8F8FF;
+  --color-gray: #EEE;
+  --color-red: #ff0000;
+}
+
+:root {
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-en: "Roboto", sans-serif;
+  --font-point: "Noto Sans JP", sans-serif;
+  --font-point02: "Noto Sans JP", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --default-margin: 1.6rem;
+  --margin-xs: calc(var(--default-margin) / 4);
+  --margin-s: calc(var(--default-margin) / 2);
+  --margin-m: var(--default-margin);
+  --margin-l: calc(var(--default-margin) * 1.5);
+  --margin-2l: calc(var(--default-margin) * 2);
+  --margin-3l: calc(var(--default-margin) * 3);
+  --margin-4l: calc(var(--default-margin) * 4);
+  --margin-5l: calc(var(--default-margin) * 5);
+  --margin-6l: calc(var(--default-margin) * 6);
+}
+
 .g-canvas {
   background-image: url(./images/background-title.png);
   margin-left: 10rem;
