@@ -440,7 +440,8 @@ html {
 
 .c-start__selection__btn {
   margin-top: 10rem;
-  margin-left: 12rem;
+  position: relative;
+  left: 25%;
 }
 
 .c-start__selection__txt {
@@ -496,19 +497,26 @@ html {
 }
 
 .c-option__flow {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 3rem;
-  width: 100rem;
+  border: solid 5px;
+  text-align: center;
 }
 
 .c-option__ttl {
   font-size: 3rem;
+  padding-top: 5rem;
+}
+
+.c-option__list {
+  display: inline-block;
+  padding-top: 3rem;
 }
 
 .c-option__list__item {
   display: flex;
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+.c-option__list__item:not(:nth-child(1)) {
+  padding-top: 4rem;
 }
 
 .c-option__btn {
@@ -575,9 +583,13 @@ html {
 }
 
 .g-canvas {
-  background-image: url(./images/background-title.png);
+  background-color: #b8860b;
+  padding: 5rem;
   margin-left: 10rem;
   margin-right: 20rem;
+}
+.g-canvas.is-option {
+  width: 61rem;
 }
 
 /*# sourceMappingURL=style.css.map */

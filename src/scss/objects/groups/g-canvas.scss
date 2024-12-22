@@ -1,7 +1,12 @@
 @use "../../foundations/var" as *;
 
 .g-canvas {
-    background-image: url(./images/background-title.png);
+    background-color: #b8860b;
+    padding: 5rem;
     margin-left: 10rem;
     margin-right: 20rem;
+
+    &.is-option {
+        width: 61rem;
+    }
 }

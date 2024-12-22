@@ -1,23 +1,27 @@
 @use "../../foundations/var" as *;
 
 .c-option__flow {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 3rem;
-    width: 100rem;
+    border: solid 5px;
+    text-align: center;
 }
 
 .c-option__ttl {
     font-size: 3rem;
+    padding-top: 5rem;
 }
 
 .c-option__list {
-    
+    display: inline-block;
+    padding-top: 3rem;
 }
 
 .c-option__list__item {
         display: flex;
-        font-size: 1.5rem;
+        font-size: 2rem;
+
+        &:not(:nth-child(1)) {
+            padding-top: 4rem;
+        }
 }
 
 .c-option__item__block {
