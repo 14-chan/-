@@ -2,7 +2,7 @@
 /*レスポンシブ用*/
 :root {
   --color-main: #17339C;
-  --color-txt: #000;
+  --color-black: #000;
   --color-white: #ffffff;
   --color-blue: #1877f2;
   --color-paleblue: #ccdcfe;
@@ -126,6 +126,10 @@ textarea {
 
 img {
   vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
 }
 
 main,
@@ -280,7 +284,7 @@ html {
 /*レスポンシブ用*/
 :root {
   --color-main: #17339C;
-  --color-txt: #000;
+  --color-black: #000;
   --color-white: #ffffff;
   --color-blue: #1877f2;
   --color-paleblue: #ccdcfe;
@@ -322,7 +326,7 @@ html {
 /*レスポンシブ用*/
 :root {
   --color-main: #17339C;
-  --color-txt: #000;
+  --color-black: #000;
   --color-white: #ffffff;
   --color-blue: #1877f2;
   --color-paleblue: #ccdcfe;
@@ -363,7 +367,7 @@ html {
 /*レスポンシブ用*/
 :root {
   --color-main: #17339C;
-  --color-txt: #000;
+  --color-black: #000;
   --color-white: #ffffff;
   --color-blue: #1877f2;
   --color-paleblue: #ccdcfe;
@@ -462,7 +466,7 @@ html {
 /*レスポンシブ用*/
 :root {
   --color-main: #17339C;
-  --color-txt: #000;
+  --color-black: #000;
   --color-white: #ffffff;
   --color-blue: #1877f2;
   --color-paleblue: #ccdcfe;
@@ -503,12 +507,12 @@ html {
 
 .c-option__ttl {
   font-size: 3rem;
-  padding-top: 5rem;
+  padding-top: 8rem;
 }
 
 .c-option__list {
   display: inline-block;
-  padding-top: 3rem;
+  padding-top: 7rem;
 }
 
 .c-option__list__item {
@@ -519,12 +523,47 @@ html {
   padding-top: 4rem;
 }
 
+.c-option__item__block {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+}
+.c-option__item__block::before {
+  content: "";
+  display: block;
+  background-color: var(--color-black);
+  width: 3.5rem;
+  height: 3.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.c-option__item__block span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  position: relative;
+  z-index: 2;
+}
+
+.c-option__item__txt {
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+}
+
 .c-option__btn {
   position: relative;
+  margin: 7rem auto 4rem auto;
+  width: 30rem;
 }
 .c-option__btn::before {
+  content: "";
   display: block;
-  background: var(--color-black);
+  background-color: var(--color-black);
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   clip-path: polygon(7% 1%, 100% 0, 100% 80%, 95% 99%, 0 100%, 0 25%);
@@ -536,9 +575,9 @@ html {
 
 .c-option__btn__txt {
   display: block;
-  width: 20rem;
-  padding: 0.4rem 0.4rem 0.4rem 0.4rem;
-  background: var(--color-white);
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--color-white);
   color: var(--color-black);
   font-size: 1.4rem;
   line-height: 1;
@@ -548,7 +587,7 @@ html {
 /*レスポンシブ用*/
 :root {
   --color-main: #17339C;
-  --color-txt: #000;
+  --color-black: #000;
   --color-white: #ffffff;
   --color-blue: #1877f2;
   --color-paleblue: #ccdcfe;
@@ -587,6 +626,7 @@ html {
   padding: 5rem;
   margin-left: 10rem;
   margin-right: 20rem;
+  width: 91.5rem;
 }
 .g-canvas.is-option {
   width: 61rem;
