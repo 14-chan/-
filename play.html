@@ -13,8 +13,16 @@
     </header>
     <!--ゲーム画面-->
     <div class="l-container">
-        <section class="g-canvas">
-            <canvas id="gameCanvas"></canvas>
+        <section class="g-canvas is-play">
+            <canvas id="gameCanvas" class="g-gamecanvas"></canvas>
+            <div id="gameOverButtons" class="c-play__end__txt" style="display: none; text-align: center; margin-top: 20px;">
+                <button id="retryButton">リトライ</button>
+                <p class="c-play__move__select"><a href="./selection.html">ステージ選択に戻る</a></p>
+                <p class="c-play__move__home"><a href="./index.html">ホームに戻る</a></p>
+            </div>
+            <div id="timerContainer" class="c-play__timer" style="text-align: center; margin-bottom: 10px; font-size: 24px;">
+                <span id="timer">60</span>
+            </div>
         </section>
     </div>
 

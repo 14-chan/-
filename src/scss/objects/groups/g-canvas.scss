@@ -10,4 +10,12 @@
     &.is-option {
         width: 61rem;
     }
+
+    &.is-play{
+        display: flex;
+    }
+}
+
+.g-gamecanvas {
+    border: 2px white;
 }

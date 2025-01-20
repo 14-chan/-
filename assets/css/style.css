@@ -130,6 +130,7 @@ img {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 main,
@@ -621,6 +622,120 @@ html {
   --margin-6l: calc(var(--default-margin) * 6);
 }
 
+.c-play__move__select {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+}
+
+.c-play__move__home {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+}
+
+/*レスポンシブ用*/
+:root {
+  --color-main: #17339C;
+  --color-black: #000;
+  --color-white: #ffffff;
+  --color-blue: #1877f2;
+  --color-paleblue: #ccdcfe;
+  --color-lightblue: #2ea7e0;
+  --color-yellow: #ffdc26;
+  --color-navy: #213378;
+  --color-thinblue: #E8F8FF;
+  --color-gray: #EEE;
+  --color-red: #ff0000;
+}
+
+:root {
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-en: "Roboto", sans-serif;
+  --font-point: "Noto Sans JP", sans-serif;
+  --font-point02: "Noto Sans JP", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --default-margin: 1.6rem;
+  --margin-xs: calc(var(--default-margin) / 4);
+  --margin-s: calc(var(--default-margin) / 2);
+  --margin-m: var(--default-margin);
+  --margin-l: calc(var(--default-margin) * 1.5);
+  --margin-2l: calc(var(--default-margin) * 2);
+  --margin-3l: calc(var(--default-margin) * 3);
+  --margin-4l: calc(var(--default-margin) * 4);
+  --margin-5l: calc(var(--default-margin) * 5);
+  --margin-6l: calc(var(--default-margin) * 6);
+}
+
+.c-select__ttl {
+  text-align: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.c-select__stage {
+  display: flex;
+  margin-top: 8rem;
+  margin-left: 2rem;
+}
+
+.c-select__stage__icon:not(:nth-child(1)) {
+  margin-left: 20rem;
+}
+
+.c-select__stage__ttl {
+  font-size: 1.5rem;
+}
+
+.c-select__stage__img {
+  margin-top: 2rem;
+}
+
+.c-select__back {
+  margin-top: 8rem;
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+
+/*レスポンシブ用*/
+:root {
+  --color-main: #17339C;
+  --color-black: #000;
+  --color-white: #ffffff;
+  --color-blue: #1877f2;
+  --color-paleblue: #ccdcfe;
+  --color-lightblue: #2ea7e0;
+  --color-yellow: #ffdc26;
+  --color-navy: #213378;
+  --color-thinblue: #E8F8FF;
+  --color-gray: #EEE;
+  --color-red: #ff0000;
+}
+
+:root {
+  --font-main: "Noto Sans JP", sans-serif;
+  --font-en: "Roboto", sans-serif;
+  --font-point: "Noto Sans JP", sans-serif;
+  --font-point02: "Noto Sans JP", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --default-margin: 1.6rem;
+  --margin-xs: calc(var(--default-margin) / 4);
+  --margin-s: calc(var(--default-margin) / 2);
+  --margin-m: var(--default-margin);
+  --margin-l: calc(var(--default-margin) * 1.5);
+  --margin-2l: calc(var(--default-margin) * 2);
+  --margin-3l: calc(var(--default-margin) * 3);
+  --margin-4l: calc(var(--default-margin) * 4);
+  --margin-5l: calc(var(--default-margin) * 5);
+  --margin-6l: calc(var(--default-margin) * 6);
+}
+
 .g-canvas {
   background-color: #b8860b;
   padding: 5rem;
@@ -630,6 +745,13 @@ html {
 }
 .g-canvas.is-option {
   width: 61rem;
+}
+.g-canvas.is-play {
+  display: flex;
+}
+
+.g-gamecanvas {
+  border: 2px white;
 }
 
 /*# sourceMappingURL=style.css.map */
