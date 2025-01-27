@@ -6,7 +6,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 600;
 
-// プレイヤー(カゴ)の情報
+// プレイヤー（カゴ）の情報
 const player = {
     x: canvas.width / 2 - 50,
     y: canvas.height - 30,
@@ -14,20 +14,35 @@ const player = {
     height: 20,
     color: '#4CAF50',
     speed: 10,
+    image: new Image(),
 };
+player.image.src = './images/fly.png';
 
-// スイカの情報
-const watermelon = {
-    x: Math.random() * (canvas.width - 30),
-    y: 0,
-    radius: 15,
-    color: '#FF5722',
-    speed: 3,
-};
+// スイカ画像のリスト
+const watermelonImages = [
+    './images/niku_tori.png',             // 肉
+    './images/tamanegi_onion.png',        // 玉ねぎ
+    './images/salt.png',                  // 塩
+    './images/cooking_kosyou_pepper.png', // コショウ
+    './images/food_gohan_hakumai.png',    // ごはん
+    './images/cooking_ketchp_kakeru.png', // ケチャップ
+    './images/egg_ware_white.png',        // 卵
+];
+
+// 正しい順番（ゲームクリア条件）
+const correctOrder = [
+    './images/niku_tori.png',             // 肉
+    './images/tamanegi_onion.png',        // 玉ねぎ
+    './images/salt.png',                  // 塩
+    './images/cooking_kosyou_pepper.png', // コショウ
+    './images/food_gohan_hakumai.png',    // ごはん
+    './images/cooking_ketchp_kakeru.png', // ケチャップ
+    './images/egg_ware_white.png',        // 卵
+];
 
 // アイテムの情報
-const items = []; // 落ちてくるアイテムを管理する配列
-let spawnInterval = 1000; // 新しいアイテムを出現させる間隔（ミリ秒）
+const items = [];
+let spawnInterval = 1000;
 
 // キー入力状態を追跡
 const keys = {
@@ -36,20 +51,21 @@ const keys = {
 };
 
 // タイマー関連
-let remainingTime = 60; // 残り時間
-let timerInterval; // タイマーのインターバルID
-
-// ゲームループの管理
+let remainingTime = 60;
+let timerInterval;
 let animationFrameId;
 
 // 音声ファイル
 const bgm = new Audio("./assets/music/back-bgm.mp3");
 const catchSound = new Audio('./assets/music/select.mp3');
-const missSound = new Audio('./assets/music/select.mp3');
+const missSound = new Audio('./assets/music/miss.mp3');
 
 // BGM設定
 bgm.loop = true;
 bgm.volume = 0.5;
+
+// プレイヤーがキャッチした順番
+let collectedOrder = [];
 
 // キーが押された時
 document.addEventListener('keydown', (e) => {
@@ -65,30 +81,30 @@ document.addEventListener('keyup', (e) => {
 
 // プレイヤーを描画
 function drawPlayer() {
-    ctx.fillStyle = player.color;
-    ctx.fillRect(player.x, player.y, player.width, player.height);
-}
-
-// スイカを描画
-function drawWatermelon() {
-    ctx.beginPath();
-    ctx.arc(watermelon.x, watermelon.y, watermelon.radius, 0, Math.PI * 2);
-    ctx.fillStyle = watermelon.color;
-    ctx.fill();
-    ctx.closePath();
+    if (player.image.complete) {
+        ctx.drawImage(player.image, player.x, player.y, player.width, player.height);
+    } else {
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+    }
 }
 
 // アイテムを描画して動かす
 function drawItems() {
     items.forEach((item, index) => {
         item.y += item.speed;
-        ctx.beginPath();
-        ctx.arc(item.x, item.y, 10, 0, Math.PI * 2); // アイテムを円として描画
-        ctx.fillStyle = 'red';
-        ctx.fill();
-        ctx.closePath();
+        if (item.image.complete) {
+            const size = 40;
+            ctx.drawImage(item.image, item.x - size / 2, item.y - size / 2, size, size);
+        } else {
+            ctx.beginPath();
+            ctx.arc(item.x, item.y, 15, 0, Math.PI * 2);
+            ctx.fillStyle = '#FF5722';
+            ctx.fill();
+            ctx.closePath();
+        }
 
-        // 画面外に出たアイテムを削除
+        // アイテムが画面外に出たら削除
         if (item.y > canvas.height) {
             items.splice(index, 1);
         }
@@ -103,21 +119,38 @@ function checkCollision(item) {
         item.y > player.y &&
         item.y < player.y + player.height
     ) {
-        catchSound.play(); // キャッチ音
+        collectedOrder.push(item.image.src); // キャッチしたアイテムを記録
+        catchSound.play();
         return true;
     } else if (item.y > canvas.height) {
-        missSound.play(); // ミス音
+        missSound.play();
         return false;
+    }
+}
+
+// ゲームクリア条件をチェック
+function checkClearCondition() {
+    if (collectedOrder.length === correctOrder.length) {
+        for (let i = 0; i < correctOrder.length; i++) {
+            if (collectedOrder[i] !== correctOrder[i]) {
+                endGame('失敗しました！順番が違います！');
+                return;
+            }
+        }
+        endGame('ゲームクリア！正しい順番でスイカを集めました！');
     }
 }
 
 // アイテムを生成
 function spawnItem() {
+    const randomIndex = Math.floor(Math.random() * watermelonImages.length);
     const newItem = {
-        x: Math.random() * canvas.width, // ランダムなX座標
-        y: 0, // 初期位置は上部
-        speed: Math.random() * 2 + 2, // ランダムな速度
+        x: Math.random() * canvas.width,
+        y: 0,
+        speed: Math.random() * 2 + 2,
+        image: new Image(),
     };
+    newItem.image.src = watermelonImages[randomIndex];
     items.push(newItem);
 }
 
@@ -127,8 +160,8 @@ function updateTimer() {
         remainingTime--;
         document.getElementById('timer').textContent = `Time: ${remainingTime}`;
     } else {
-        clearInterval(timerInterval); // タイマー停止
-        endGame(); // ゲーム終了
+        clearInterval(timerInterval);
+        endGame('時間切れです！');
     }
 }
 
@@ -140,77 +173,48 @@ function startTimer() {
 }
 
 // ゲーム終了処理
-function endGame() {
-    // キャンバスの更新停止
+function endGame(message) {
     cancelAnimationFrame(animationFrameId);
-
-    // ボタンを表示
-    const gameOverButtons = document.getElementById('gameOverButtons');
-    gameOverButtons.style.display = 'block';
-
-    // イベントリスナー追加
-    document.getElementById('retryButton').addEventListener('click', () => location.reload());
-    document.getElementById('stageSelectButton').addEventListener('click', () => alert('ステージ選択に戻るを実装してください'));
-    document.getElementById('homeButton').addEventListener('click', () => alert('ホームに戻るを実装してください'));
+    clearInterval(timerInterval);
+    alert(message);
+    location.reload();
 }
 
 // ゲームロジック
 function update() {
-    // プレイヤーの移動
     if (keys.left && player.x > 0) player.x -= player.speed;
     if (keys.right && player.x + player.width < canvas.width) player.x += player.speed;
 
-    // スイカの移動
-    watermelon.y += watermelon.speed;
-
-    // スイカが下に到達したらリセット
-    if (watermelon.y - watermelon.radius > canvas.height) {
-        watermelon.x = Math.random() * (canvas.width - 30);
-        watermelon.y = 0;
-    }
-
-    // スイカとプレイヤーの衝突判定
-    if (
-        watermelon.y + watermelon.radius > player.y &&
-        watermelon.x > player.x &&
-        watermelon.x < player.x + player.width
-    ) {
-        watermelon.x = Math.random() * (canvas.width - 30);
-        watermelon.y = 0; // スイカをリセット
-    }
-
-    // アイテムの衝突判定と描画
-    drawItems();
     items.forEach((item, index) => {
         if (checkCollision(item)) {
-            items.splice(index, 1); // 衝突したアイテムを削除
+            items.splice(index, 1);
         }
     });
+
+    checkClearCondition();
 }
 
 // ゲーム画面の更新
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // 画面クリア
-    drawPlayer(); // プレイヤーを描画
-    drawWatermelon(); // スイカを描画
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawPlayer();
+    drawItems();
 }
 
 // ゲームループ
 function gameLoop() {
-    update(); // ロジックの更新
-    draw(); // 描画の更新
-    animationFrameId = requestAnimationFrame(gameLoop); // 次のフレームを登録
+    update();
+    draw();
+    animationFrameId = requestAnimationFrame(gameLoop);
 }
 
 // ゲーム開始処理
 function startGame() {
-    bgm.play(); // BGM再生
-    startTimer(); // タイマー開始
-    gameLoop(); // ゲームループ開始
+    bgm.play();
+    startTimer();
+    setInterval(spawnItem, spawnInterval);
+    gameLoop();
 }
-
-// 定期的にアイテムを生成
-setInterval(spawnItem, spawnInterval);
 
 // ゲーム開始
 startGame();
